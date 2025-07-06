@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Iris ML Pipeline
 
 A complete, production-ready machine learning pipeline for Iris flower classification and regression analysis.
@@ -310,3 +311,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
+=======
+# IrisDataTrain
+>>>>>>> ded87010a7ce0dc582e89e02862e08ba2f382baf
