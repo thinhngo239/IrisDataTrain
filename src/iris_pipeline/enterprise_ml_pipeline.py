@@ -509,6 +509,8 @@ class EnterpriseMLPipeline:
                 'best_params': 'default',
                 'val_score': val_acc,
                 'holdout_score': holdout_acc,
+                'cv_score': val_acc,
+                'cv_std': 0.0,
                 'search_object': None
             }
             
@@ -573,7 +575,7 @@ class EnterpriseMLPipeline:
                 'f1_weighted': f1_weighted,
                 'roc_auc_ovr': roc_auc_ovr,
                 'roc_auc_ovo': roc_auc_ovo,
-                'cv_score': model_info['cv_score']
+                'cv_score': model_info.get('cv_score', None)
             }
             
             # Print results
@@ -581,7 +583,8 @@ class EnterpriseMLPipeline:
             print(f"   📊 F1-Score (Macro): {f1_macro:.4f}")
             print(f"   📊 F1-Score (Weighted): {f1_weighted:.4f}")
             print(f"   🎯 ROC-AUC (OvR): {roc_auc_ovr:.4f}")
-            print(f"   ⚙️ Nested CV Score: {model_info['cv_score']:.4f} ± {model_info['cv_std']:.4f}")
+            if model_info.get('cv_score', None) is not None:
+                print(f"   ⚙️ Nested CV Score: {model_info['cv_score']:.4f} ± {model_info.get('cv_std', 0.0):.4f}")
         
         # Create comparison table
         print(f"\n{'='*100}")
